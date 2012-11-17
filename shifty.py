@@ -1,4 +1,4 @@
-import codecs, logging, os, re, smtplib, string, twitter, traceback
+import codecs, logging, os, re, smtplib, string, simplejson, twitter, traceback
 from datetime import *
 from types import *
 
@@ -16,18 +16,17 @@ def write_codes(codes):
     logging.info('emailing codes...')
     p = open(os.path.join(dir_name, '../g.p')).read()
     from_addrs = 'juanny.gee@gmail.com'
-    to_addrs = ['juanny.gee@gmail.com']
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
     msg = "From: %s\r\nTo: %s\r\nSubject: %s\r\nDate: %s\r\n\r\n%s" % (
                     from_addrs,
-                    string.join(to_addrs, ","),
+                    string.join(mailing_list, ","),
                     'New SHIFT codes posted',
                     datetime.now(), codes)
     smtp.ehlo() # for tls add this line
     smtp.starttls() # for tls add this line
     smtp.ehlo() # for tls add this line
     smtp.login(from_addrs, p)
-    smtp.sendmail(from_addrs, to_addrs, msg)
+    smtp.sendmail(from_addrs, mailing_list, msg)
     smtp.quit()
 
 dir_name = os.path.dirname(__file__)
@@ -35,6 +34,7 @@ c_k = open(os.path.join(dir_name, '../c.k')).read()
 c_s = open(os.path.join(dir_name, '../c.s')).read()
 a_t_k = open(os.path.join(dir_name, '../a_t.k')).read()
 a_t_s = open(os.path.join(dir_name, '../a_t.s')).read()
+mailing_list = simplejson.loads(open(os.path.join(dir_name, '../mailing_list.json')).read())
 
 api = twitter.Api(consumer_key=c_k, consumer_secret=c_s, access_token_key=a_t_k, access_token_secret=a_t_s)
 users = ['DuvalMagic', 'gearboxsoftware']
