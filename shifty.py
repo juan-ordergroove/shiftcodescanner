@@ -2,7 +2,7 @@ import codecs, logging, os, re, smtplib, string, simplejson, twitter, traceback
 from datetime import *
 from types import *
 
-logging.basicConfig(filename='/tmp/twitter_shift_code_scanner.log'
+logging.basicConfig(filename='/var/log/shiftscanner/scan.log'
                     , format='%(asctime)s %(message)s'
                     , datefmt='%m/%d/%Y %I:%M:%S %p'
                     , level=logging.INFO)
