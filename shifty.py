@@ -59,7 +59,7 @@ def scan_for_codes():
             created = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y')
             if two_hours_ago > created: continue
 
-            m = re.search('.*X360.*[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}', tweet.text)
+            m = re.search('.*360.*[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}', tweet.text)
             if m and m.group(0): codes += tweet.text
     
     if codes:
