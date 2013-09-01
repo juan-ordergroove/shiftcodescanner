@@ -51,7 +51,7 @@ def scan_for_codes():
     codes = []
     past_codes = False
     
-    two_hours_ago = datetime.utcnow() + timedelta(minutes=-30)
+    two_hours_ago = datetime.utcnow() - timedelta(hours=2)
     api = twitter.Api(consumer_key=shift_config.get('c_k')
             , consumer_secret=shift_config.get('c_s')
             , access_token_key=shift_config.get('at_k')
@@ -60,7 +60,7 @@ def scan_for_codes():
 
     logging.info('scanning users...')
     for user in shift_config.get('scan_users'):
-    	timeline = api.GetUserTimeline(user)
+    	timeline = api.GetUserTimeline(screen_name=user)
     	for tweet in timeline:
             created = datetime.strptime(tweet.created_at, '%a %b %d %H:%M:%S +0000 %Y')
             if two_hours_ago > created: continue
