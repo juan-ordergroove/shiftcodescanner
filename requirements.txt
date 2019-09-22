@@ -1,0 +1,2 @@
+pytest==4.6.5
+python-twitter==3.5
