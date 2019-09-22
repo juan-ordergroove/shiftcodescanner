@@ -18,7 +18,7 @@ class Twitter(object):
 
     def filter(self, *args, **kwargs):
         twitter_urls_with_shift_codes = []
-        tweets = self._api.GetUserTimeLine(screen_name='dgShiftCodes')
+        tweets = self._api.GetUserTimeline(screen_name='dgShiftCodes')
         for tweet in tweets:
             if self._tweet_is_older_than_two_hours(tweet):
                 continue

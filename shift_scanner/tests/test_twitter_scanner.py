@@ -21,7 +21,7 @@ class TwitterScannerUnitTests(unittest.TestCase):
         }) for i, c in enumerate(['a', 'b', 'c'])]
 
     def test_twitter_scanner_returns_an_empty_list_when_no_tweets_contain_shift_codes(self, mock_twitter):
-        mock_twitter.Api.return_value.GetUserTimeLine.return_value = self.mock_tweets
+        mock_twitter.Api.return_value.GetUserTimeline.return_value = self.mock_tweets
 
         twitter_scanner = Twitter()
         self.assertEqual([], twitter_scanner.filter())
@@ -35,7 +35,7 @@ class TwitterScannerUnitTests(unittest.TestCase):
         self.mock_tweets.append(old_tweet_with_shift_code)
 
         twitter_scanner = Twitter()
-        mock_twitter.Api.return_value.GetUserTimeLine.return_value = self.mock_tweets
+        mock_twitter.Api.return_value.GetUserTimeline.return_value = self.mock_tweets
         self.assertEqual([], twitter_scanner.filter())
 
     def test_twitter_scanner_returns_a_list_of_links_to_tweets_that_contain_shift_codes(self, mock_twitter):
@@ -48,7 +48,7 @@ class TwitterScannerUnitTests(unittest.TestCase):
         self.mock_tweets.append(tweet_with_shift_code)
 
         twitter_scanner = Twitter()
-        mock_twitter.Api.return_value.GetUserTimeLine.return_value = self.mock_tweets
+        mock_twitter.Api.return_value.GetUserTimeline.return_value = self.mock_tweets
         expected_url = 'https://twitter.com/{}/status/{}'.format(
             tweet_with_shift_code.user.screen_name,
             tweet_with_shift_code.id
