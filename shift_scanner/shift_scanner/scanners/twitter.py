@@ -3,16 +3,17 @@
 import time
 
 import twitter
+from shift_scanner.settings import SETTINGS
 from shift_scanner.matcher import contains_shift_code
 
 
 class Twitter(object):
     def __init__(self, *args, **kwargs):
         self._api = twitter.Api(
-            consumer_key='',
-            consumer_secret='',
-            access_token_key='',
-            access_token_secret=''
+            consumer_key=SETTINGS['twitter']['consumer_key'],
+            consumer_secret=SETTINGS['twitter']['consumer_secret'],
+            access_token_key=SETTINGS['twitter']['access_token_key'],
+            access_token_secret=SETTINGS['twitter']['access_token_secret']
         )
 
     def filter(self, *args, **kwargs):
