@@ -3,8 +3,8 @@
 import time
 
 import twitter
-from shift_scanner.settings import SETTINGS
-from shift_scanner.matcher import contains_shift_code
+from settings import SETTINGS
+from matcher import contains_shift_code
 
 
 class Twitter(object):
@@ -24,8 +24,7 @@ class Twitter(object):
                 continue
 
             if contains_shift_code(tweet.text):
-                twitter_urls_with_shift_codes.append(self._build_url_from_tweet(tweet))
-        return twitter_urls_with_shift_codes
+                return self._build_url_from_tweet(tweet)
 
     @staticmethod
     def _tweet_is_older_than_two_hours(tweet):
