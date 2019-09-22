@@ -3,8 +3,8 @@
 import time
 
 import twitter
-from settings import SETTINGS
-from matcher import contains_shift_code
+from shift_scanner.settings import SETTINGS
+from shift_scanner.matcher import contains_shift_code
 
 
 class Twitter(object):

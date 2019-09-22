@@ -2,8 +2,8 @@
 
 import requests
 
-import scanners
-from settings import SETTINGS
+from shift_scanner import scanners
+from shift_scanner.settings import SETTINGS
 
 
 class App(object):
