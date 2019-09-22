@@ -2,10 +2,8 @@
 
 import re
 
+SHIFT_CODE_PATTERN = re.compile('[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}')
 
-class ShiftCodeMatcher(object):
-    SHIFT_CODE_PATTERN = re.compile('[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}-[A-Z0-9]{5}')
 
-    @classmethod
-    def contains_shift_code(cls, text, *args, **kwargs):
-        return cls.SHIFT_CODE_PATTERN.findall(text)
+def contains_shift_code(text, *args, **kwargs):
+    return SHIFT_CODE_PATTERN.findall(text)
